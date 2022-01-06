@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="row">
+    <div class="col-lg-1 col-sm-2 col-3">
+      <img class="pk-logo" src="assets/images/PK-White.svg" alt="PK" />
+    </div>
+    <div class="col-lg-2 col-sm-2 col-5 offset-lg-9 offset-sm-8 offset-4">
+      <button (click)="login()" *ngIf="!oktaAuthState?.isAuthenticated">
+        Login
+      </button>
+      <button (click)="logout()" *ngIf="oktaAuthState?.isAuthenticated">
+        Logout
+      </button>
+    </div>
+  </div>
+</header>

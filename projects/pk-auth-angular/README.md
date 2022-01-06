@@ -1,16 +1,6 @@
 # PK-Auth-Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
-
-`npm install` to install all the dependencies of this project.
-
-## Build
-
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-we can create custom npm package using `npm pack` command inside the `dist/pk-auth-angular/` folder. then it will create `pk-auth-angular-xxx.tgz` file, which we can use by installing this npm package in other angular projects.
-
-Run `npm run watch` to build the project in watch mode.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
 ## Usage
 
@@ -21,8 +11,7 @@ _package.json_
         "dependencies":{
             .....,
             "@angular/common": "^12.1.0",
-            "@angular/core": "^12.1.0",
-            "bootstrap":"^5.1.3"
+            "@angular/core": "^12.1.0"
         }
     }
 ```
@@ -47,9 +36,6 @@ _angular.json_
                             "input": "node_modules/pk-auth-angular/assets",
                             "output": "./assets"
                             }
-                        ],
-                        styles:[
-                            "node_modules/bootstrap/scss/bootstrap.scss"
                         ]
                     }
                 }

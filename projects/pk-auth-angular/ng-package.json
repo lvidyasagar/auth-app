@@ -1,0 +1,20 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/pk-auth-angular",
+  "assets": ["./assets"],
+  "lib": {
+    "cssUrl": "inline",
+    "entryFile": "src/public-api.ts",
+    "styleIncludePaths": [
+      "src/lib/auth.component.scss"
+    ],
+    "umdModuleIds": {
+      "@okta/okta-angular": "@okta/okta-angular",
+      "@okta/okta-auth-js": "@okta/okta-auth-js"
+    }
+  },
+  "allowedNonPeerDependencies": [
+    "@okta/okta-angular",
+    "@okta/okta-auth-js"
+  ]
+}

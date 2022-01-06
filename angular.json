@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "pk-auth-angular": {
+      "projectType": "library",
+      "root": "projects/pk-auth-angular",
+      "sourceRoot": "projects/pk-auth-angular/src",
+      "prefix": "lib",
+
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pk-auth-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pk-auth-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pk-auth-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pk-auth-angular/src/test.ts",
+            "tsConfig": "projects/pk-auth-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/pk-auth-angular/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "pk-auth-angular"
 }

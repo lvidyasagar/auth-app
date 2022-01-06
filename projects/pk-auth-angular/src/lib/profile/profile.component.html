@@ -1,0 +1,8 @@
+<div>
+    <app-home></app-home>
+    <div *ngIf="oktaAuthState?.isAuthenticated">
+      <p>Welcome to PK</p>
+      <a href="/dashboard" *ngIf="isAdmin">click here to go dashboard</a>
+    </div>
+  </div>
+  
