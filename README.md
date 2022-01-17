@@ -58,7 +58,7 @@ _angular.json_
     }
 ```
 
-to include assets from `pk-auth-angular` library to current projects.
+to include assets and styles from `pk-auth-angular` library to current projects.
 
 ## Example
 
