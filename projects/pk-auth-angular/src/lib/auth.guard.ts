@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { OktaAuthStateService } from '@okta/okta-angular';
 import { AuthState } from '@okta/okta-auth-js';
+import { AuthConstants } from './constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -23,16 +24,25 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    if (this.oktaAuthState?.isAuthenticated) {
-      const userClaims = this.oktaAuthState.accessToken?.claims.group;
-      console.log(userClaims);
-      if (route.data.roles && route.data.roles.indexOf(userClaims[1]) === -1) {
-        this.router.navigate(['/']);
-        return false;
-      }
+    const userClaims: string[] =
+      this.oktaAuthState && this.oktaAuthState.accessToken?.claims.group;
+    if (
+      this.oktaAuthState?.isAuthenticated &&
+      route.data?.admin &&
+      userClaims.includes(AuthConstants.roles.ADMIN_ROLE)
+    ) {
+      return true;
+    } else if (
+      this.oktaAuthState?.isAuthenticated &&
+      route.data?.admin &&
+      !userClaims.includes(AuthConstants.roles.ADMIN_ROLE)
+    ) {
+      this.router.navigate(['/unauthorized']);
+      return false;
+    } else if (this.oktaAuthState?.isAuthenticated) {
       return true;
     }
-    this.router.navigate(['/unauthorized']);
+    this.router.navigate(['/']);
     return false;
   }
 }

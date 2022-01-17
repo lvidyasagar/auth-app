@@ -5,7 +5,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import * as Constants from './constants';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -30,7 +29,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Constants.ADMIN_ROLE] },
+    data: { admin: true },
   },
   {
     path: 'unauthorized',

@@ -11,7 +11,8 @@ _package.json_
         "dependencies":{
             .....,
             "@angular/common": "^12.1.0",
-            "@angular/core": "^12.1.0"
+            "@angular/core": "^12.1.0",
+            "bootstrap":"^5.1.3"
         }
     }
 ```
@@ -59,9 +60,24 @@ import { AppComponent } from './app.component';
 import { AuthModule } from 'pk-auth-angular';
 import { AppRoutingModule } from './app-routing.module';
 
+const authConfig: AuthConfig = {
+  config: {
+    issuer: 'https://{your-Domain}/oauth2/default',
+    clientId: 'xxxxxxxxxxxxxxx',
+    redirectUri: 'http://{host}/login/callback',
+    scopes: ['openid', 'profile', 'email'],
+    pkce: true,
+  },
+  roles: {
+    ADMIN_GROUP: 'admin',
+    USER_GROUP: 'local',
+  },
+  postAuthRedirectPage: '/{redirect-path}',
+};
+
 @NgModule({
 declarations: [AppComponent],
-imports: [BrowserModule, AuthModule, AppRoutingModule],
+imports: [BrowserModule, AuthModule.forRoot(authConfig), AppRoutingModule],
 providers: [],
 bootstrap: [AppComponent],
 })

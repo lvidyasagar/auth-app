@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { AuthState, OktaAuth } from '@okta/okta-auth-js';
+import { AuthConstants } from '../constants';
 
 @Component({
   selector: 'app-home',
@@ -18,15 +19,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.oktaAuthService.authState$.subscribe((authState) => {
       this.oktaAuthState = authState;
-      if (this.oktaAuthState.isAuthenticated) {
-        this.router.navigate(['/profile']);
-      }
     });
   }
 
   async login() {
     if (!this.oktaAuthState?.isAuthenticated)
-      await this.oktaAuth.signInWithRedirect({ originalUri: '/home' });
+      await this.oktaAuth.signInWithRedirect({
+        originalUri: AuthConstants.postAuthRedirectURI,
+      });
   }
 
   async logout() {
